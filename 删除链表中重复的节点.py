@@ -9,12 +9,11 @@ class Solution:
     def deleteDuplication(self, head):
         if not head or not head.next:
             return head
-        if head.val == head.next.val:
-            current = head.next.next
-            while current and current.val == head.val:
+        current = head.next
+        if head.val == current.val:
+            while current and current.val==head.val:
                 current = current.next
             return self.deleteDuplication(current)
         else:
-            current = head.next
             head.next = self.deleteDuplication(current)
             return head
