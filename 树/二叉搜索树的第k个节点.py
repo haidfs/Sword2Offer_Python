@@ -10,19 +10,20 @@ class TreeNode:
 class Solution:
     # 返回对应节点TreeNode
     def KthNode(self, pRoot, k):
-        if k <= 0:
+        if not pRoot:
             return None
-        mid = self.midTraverse(pRoot)
-        if k > len(mid):
+        if k < 1 or k > len(self.midTraverse(pRoot)):
             return None
-        return mid[k - 1]
+        return self.midTraverse(pRoot)[k - 1]
 
     def midTraverse(self, pRoot):
-        if not pRoot:
-            return []
         res = []
+        if not pRoot:
+            return res
+        # if pRoot.left:这里的if可以不再判别了 显得更加简洁
         res += self.midTraverse(pRoot.left)
-        res.append(pRoot)
+        res.append(pRoot.val)
+        # if pRoot.right:
         res += self.midTraverse(pRoot.right)
         return res
 

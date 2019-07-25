@@ -29,7 +29,6 @@ class Solution:
             curLevelNodeList = temp
         return res
 
-
 if __name__ == '__main__':
     for i in range(1, 16):
         exec("n%s = TreeNode(%s)" % (i, i))
